@@ -53,11 +53,11 @@ export class WallComponent implements OnInit {
     this.postService.createPost(this.circleId, content)
       .subscribe(res => {
         this.post.nativeElement.value = "";
-        this.onPushNotification("New post in " + this.circleName);
+        // this.onPushNotification("New post in " + this.circleName);
       });
   }
 
-  onNotificationChange(event) {
+  /*onNotificationChange(event) {
     if (event.checked) {
 
       // Subscribe
@@ -132,5 +132,5 @@ export class WallComponent implements OnInit {
     };
 
     this.pushService.push(notification).subscribe();
-  }
+  }*/
 }

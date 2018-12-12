@@ -3,7 +3,7 @@ import {
 } from "@angular/common/http";
 import {environment} from "../environments/environment";
 import {catchError} from "rxjs/operators";
-import {Observable} from "rxjs";
+import {Observable, throwError} from "rxjs";
 
 export class AppInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -12,7 +12,7 @@ export class AppInterceptor implements HttpInterceptor {
 
     return next.handle(duplicate)
       .pipe(catchError((error: HttpErrorResponse) => {
-        return Observable.throw(error);
+        return throwError(error);
       }));
   }
 }

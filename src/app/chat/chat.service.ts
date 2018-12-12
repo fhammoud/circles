@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Message} from "./message/message.model";
-import "rxjs/add/operator/map";
 import {StateService} from "../_shared/services/state.service";
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
