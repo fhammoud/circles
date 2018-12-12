@@ -1,3 +1,4 @@
+// Require dependencies
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -6,6 +7,10 @@ var logger = require('morgan');
 var index = require('./routes/index');
 var api = require('./routes/api');
 
+// Connect to DB
+require('./db');
+
+// Start express
 var app = express();
 
 // Use middleware
