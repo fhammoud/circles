@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/server/public
 
 # dependencies
 /node_modules
@@ -20,6 +21,7 @@ speed-measure-plugin.json
 *.launch
 .settings/
 *.sublime-workspace
+*.iml
 
 # IDE - VSCode
 .vscode/*
