@@ -1,0 +1,10 @@
+<form (ngSubmit)="onNewCircle()">
+  <mat-form-field>
+    <input matInput placeholder="Circle name" autocomplete="off" [formControl]="circleName">
+    <mat-error *ngIf="circleName.hasError('required')">Please enter a name!</mat-error>
+  </mat-form-field>
+  <div class="button-group">
+    <button mat-raised-button aria-label="create" [disabled]="circleName.value.length === 0"><mat-icon>done</mat-icon></button>
+    <button mat-raised-button type="button" aria-label="cancel" routerLink="/circles"><mat-icon>clear</mat-icon></button>
+  </div>
+</form>

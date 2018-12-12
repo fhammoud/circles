@@ -1,0 +1,44 @@
+/*mat-card {
+  height: 80vh;
+  position: relative;
+}
+
+mat-form-field {
+  width: 90%;
+  position: absolute;
+  bottom: 0;
+}*/
+
+mat-form-field {
+  width: 100%;
+}
+
+.chat {
+  height: 70vh;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.status {
+  display: inline;
+}
+
+.avatar-mini {
+  height: 16px;
+  width: 16px;
+  line-height: 16px;
+  font-size: 13px;
+  text-align: center;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 50%;
+  background-color: #f44336;
+  color: white;
+}
+
+mat-chip {
+  text-align: center;
+  display: inline-block;
+  padding: 8px;
+  border-radius: 24px;
+}

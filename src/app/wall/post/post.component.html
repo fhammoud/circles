@@ -1,0 +1,20 @@
+<mat-card>
+  <div class="avatar">{{post.owner.charAt(0)}}</div>
+  <mat-card-header>
+    <mat-card-title>{{post.owner}}
+      <button mat-button aria-label="more" mdTooltip="More"
+              [matMenuTriggerFor]="appMenu" *appRole="post.owner"><mat-icon>more_vert</mat-icon></button>
+    </mat-card-title>
+    <mat-card-subtitle>{{post.time | date:"medium"}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <span [outerHTML]="post.content | urlify"></span>
+  </mat-card-content>
+  <button mat-mini-fab aria-label="chat" mdTooltip="Chat"><mat-icon>chat</mat-icon></button>
+  <button mat-mini-fab aria-label="like" mdTooltip="Like"><mat-icon>thumb_up</mat-icon></button>
+</mat-card>
+
+<mat-menu #appMenu="matMenu">
+  <button mat-menu-item aria-label="edit" [routerLink]="[post.id, 'edit']"><mat-icon>edit</mat-icon>Edit</button>
+  <button mat-menu-item aria-label="delete" (click)="onPostDelete()"><mat-icon>delete_forever</mat-icon>Delete</button>
+</mat-menu>

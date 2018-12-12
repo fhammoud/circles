@@ -1,0 +1,13 @@
+<div id="circle-list" *ngIf="!loading">
+  <h1><strong>Hello, {{user}}</strong></h1>
+  <div>
+    <!--<h2>Your Circles</h2>-->
+    <div id="circles">
+      <h3 *ngIf="circles.length === 0">You're not part of any circles yet :(</h3>
+      <app-circle [circle]="circle" *ngFor="let circle of circles"></app-circle>
+    </div>
+  </div>
+  <button mat-fab type="button" class="fab" matTooltip="New circle" matTooltipPosition="before"
+          aria-label="new circle" routerLink="new-circle"><mat-icon>add</mat-icon></button>
+</div>
+<mat-spinner *ngIf="loading"></mat-spinner>

@@ -1,0 +1,13 @@
+<div class="bubble" *ngIf="sender !== username">
+    <div class="avatar">{{sender.charAt(0)}}</div>
+  <ul>
+    <li *ngFor="let message of messages">{{message.content}}</li>
+  </ul>
+</div>
+
+<div class="bubble from-me" *ngIf="sender === username">
+  <ul>
+    <li *ngFor="let message of messages"><span [outerHTML]="message.content | urlify"></span></li>
+  </ul>
+  <div class="avatar">{{username.charAt(0)}}</div>
+</div>
