@@ -19,7 +19,7 @@ import {CircleComponent} from "./circles/circle/circle.component";
 import {CirclesComponent} from "./circles/circles.component";
 import { MessageComponent } from './chat/message/message.component';
 import {StateService} from "./_shared/services/state.service";
-import { ErrorComponent } from './error/error.component';
+import { ErrorComponent } from './_shared/error/error.component';
 import { SideComponent } from './side/side.component';
 import { NewCircleComponent } from './circles/new-circle/new-circle.component';
 import { WallComponent } from './wall/wall.component';

@@ -11,20 +11,11 @@ import {StateService} from "../_shared/services/state.service";
 })
 export class CircleListComponent implements OnInit {
   user: string;
-  loading: boolean;
   circles: Circle[] = [];
 
   constructor(
     private circleService: CircleService,
-    private stateService: StateService) {
-
-    this.stateService.getState()
-      .subscribe(
-        state => {
-          this.loading = state.isLoading;
-        }
-      );
-  }
+    private stateService: StateService) { }
 
   ngOnInit() {
     this.stateService.setTitle('Circles');

@@ -1,10 +1,9 @@
 import {
   MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule,
-  MatMenuModule,
-  MatProgressSpinnerModule,
-  MatSidenavModule, MatSlideToggleModule, MatSnackBarModule,
+  MatMenuModule, MatProgressSpinnerModule, MatSidenavModule, MatSlideToggleModule, MatSnackBarModule,
   MatToolbarModule, MatTooltipModule
 } from '@angular/material';
+import {LayoutModule} from "@angular/cdk/layout";
 import {NgModule} from "@angular/core";
 
 @NgModule({
@@ -12,13 +11,13 @@ import {NgModule} from "@angular/core";
     MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule,
     MatInputModule, MatIconModule, MatTooltipModule, MatDialogModule,
     MatChipsModule, MatSidenavModule, MatProgressSpinnerModule, MatSlideToggleModule,
-    MatFormFieldModule, MatSnackBarModule
+    MatFormFieldModule, MatSnackBarModule, LayoutModule
   ],
   exports: [
     MatButtonModule, MatCardModule, MatMenuModule, MatToolbarModule,
     MatInputModule, MatIconModule, MatTooltipModule, MatDialogModule,
     MatChipsModule, MatSidenavModule, MatProgressSpinnerModule, MatSlideToggleModule,
-    MatFormFieldModule, MatSnackBarModule
+    MatFormFieldModule, MatSnackBarModule, LayoutModule
   ]
 })
 export class AppMaterialModule { }

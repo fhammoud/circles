@@ -3,7 +3,7 @@ import {UserService} from "../user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../user.model";
 import {Router} from "@angular/router";
-import {ErrorComponent} from "../../error/error.component";
+import {ErrorComponent} from "../../_shared/error/error.component";
 import {MatDialog} from "@angular/material";
 
 @Component({

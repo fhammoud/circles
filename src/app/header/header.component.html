@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <button mat-button (click)="onGoBack()"
-          *ngIf="userService.isLoggedIn()"
+          *ngIf="!isMainPage"
           aria-label="back">
     <mat-icon>arrow_back</mat-icon>
   </button>

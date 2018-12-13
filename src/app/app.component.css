@@ -1,3 +1,7 @@
 mat-sidenav-container {
   height: 100vh;
 }
+
+.f-container {
+  height: -webkit-calc(100% - 64px);
+}

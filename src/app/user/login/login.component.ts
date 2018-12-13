@@ -4,7 +4,7 @@ import {UserService} from "../user.service";
 import {User} from "../user.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material";
-import {ErrorComponent} from "../../error/error.component";
+import {ErrorComponent} from "../../_shared/error/error.component";
 import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({

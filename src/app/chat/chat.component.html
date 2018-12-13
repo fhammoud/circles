@@ -1,23 +1,25 @@
-<mat-card>
-  <div class="chat" #chat>
-    <app-message [messages]="messages" *ngFor="let messages of groupedMessages"></app-message>
+<div class="container">
+  <div class="row">
+    <div class="chat" #chat>
+      <app-message [messages]="messages" *ngFor="let messages of groupedMessages"></app-message>
+    </div>
   </div>
-  <hr>
-  <footer>
-    <div class="avatars">
-      <div class="status" *ngFor="let participant of participants">
-        <div class="avatar-mini">
-          {{participant.name.charAt(0)}}
+  <div class="row">
+    <div class="f-is-typing-block">
+      <div *ngFor="let participant of participants">
+        <div *ngIf="participant.isTyping">
+          <div class="avatar">
+            {{participant.name.charAt(0)}}
+          </div>
+          <mat-chip selected="true" color="warn">is typing ...</mat-chip>
         </div>
-        <mat-chip selected="true" color="warn" *ngIf="participant.isTyping"> is typing...</mat-chip>
       </div>
     </div>
+  </div>
+</div>
+<mat-card class="f-chat">
+  <div class="container">
     <form [formGroup]="messageForm" (ngSubmit)="onSendMessage()" novalidate>
-      <!--<mat-form-field>
-        <button type="button" mat-button matPrefix aria-label="attach"><mat-icon>add_circle_outline</mat-icon></button>
-        <input matInput formControlName="message" placeholder="Write a message..." autocomplete="off" (keydown)="onKeyDown()">
-        <button mat-button matSuffix [disabled]="!messageForm.valid" aria-label="send"><mat-icon>send</mat-icon></button>
-      </mat-form-field>-->
       <mat-form-field>
         <button type="button" mat-button matPrefix aria-label="attach"><mat-icon>add_circle_outline</mat-icon></button>
         <textarea matInput matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="4" formControlName="message"
@@ -25,5 +27,5 @@
         <button mat-button matSuffix [disabled]="!messageForm.valid" aria-label="send"><mat-icon>send</mat-icon></button>
       </mat-form-field>
     </form>
-  </footer>
+  </div>
 </mat-card>
