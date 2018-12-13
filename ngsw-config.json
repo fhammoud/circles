@@ -19,7 +19,27 @@
       "resources": {
         "files": [
           "/assets/**"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/**",
+          "https://fonts.gstatic.com/**"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "from-api",
+      "urls": [
+        "/api/circles/**",
+        "/api/chat/**",
+        "/api/posts/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "3d",
+        "timeout": "5s"
       }
     }
   ]
