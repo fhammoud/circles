@@ -3,28 +3,10 @@ mat-form-field {
   padding: 0;
 }
 
-.chat {
-  height: 100%;
-  width: 100%;
-  overflow-y: auto;
-  margin-bottom: 10px;
-}
-
-.status {
-  display: inline;
-}
-
-.avatar-mini {
-  height: 16px;
-  width: 16px;
-  line-height: 16px;
-  font-size: 13px;
-  text-align: center;
-  display: inline-block;
-  padding: 8px;
-  border-radius: 50%;
-  background-color: #f44336;
-  color: white;
+.f-chat-area {
+  padding-bottom: 100px;
+  /*height: 100%;*/
+  /*overflow-y: auto;*/
 }
 
 mat-chip {
@@ -36,13 +18,9 @@ mat-chip {
   font-size: smaller;
 }
 
-.f-chat {
+.f-chat-form {
   position: fixed;
   bottom: 20px;
   width: 100%;
   padding: 0;
-}
-
-textarea {
-  height: 22px;
 }

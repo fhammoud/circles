@@ -1,9 +1,12 @@
 <div class="container">
   <mat-card>
     <mat-card-content>
-      <mat-form-field>
-        <input matInput placeholder="Share something interesting..." #post autocomplete="off">
-        <button mat-raised-button matSuffix type="button" aria-label="post" matTooltip="Post" (click)="onNewPost()">
+      <mat-form-field class="f-form">
+        <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="4"
+                  autocomplete="off" placeholder="Share something interesting..." #post></textarea>
+        <button mat-raised-button matSuffix type="button" aria-label="post" matTooltip="Post"
+                (click)="onNewPost()"
+                [disabled]="post.value.length === 0">
           <mat-icon>create</mat-icon>
         </button>
       </mat-form-field>

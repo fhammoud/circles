@@ -10,7 +10,6 @@ import {StateService} from "../_shared/services/state.service";
   styleUrls: ['./circle-list.component.css']
 })
 export class CircleListComponent implements OnInit {
-  user: string;
   circles: Circle[] = [];
 
   constructor(
@@ -19,8 +18,6 @@ export class CircleListComponent implements OnInit {
 
   ngOnInit() {
     this.stateService.setTitle('Circles');
-    this.user = this.stateService.getUsername();
-
     this.circleService.getCircles()
       .subscribe((circles: Circle[]) => this.circles = circles);
   }

@@ -1,21 +1,23 @@
-<mat-card class="example-form">
-  <mat-card-header>
-    <mat-card-title>Register</mat-card-title>
-  </mat-card-header>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
-    <mat-form-field class="example-full-width">
-      <input class="mat-body-2" matInput placeholder="Username" formControlName="username" autocomplete="off">
-      <mat-error *ngIf="registerForm.get('username').hasError('required')">
-        Username is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <input type="password" matInput placeholder="Password" formControlName="password">
-      <mat-error *ngIf="registerForm.get('password').hasError('required')">
-        Password is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <button mat-raised-button type="submit" [disabled]="!registerForm.valid" color="accent">Register</button>
-    <mat-card-subtitle>Already have an account? <a routerLink="/login" color="warn">Sign in!</a></mat-card-subtitle>
-  </form>
-</mat-card>
+<div class="container f-align-center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+      <mat-form-field>
+        <input class="mat-body-2" matInput placeholder="Username" formControlName="username" autocomplete="off">
+        <mat-error *ngIf="registerForm.get('username').hasError('required')">
+          Username is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" matInput placeholder="Password" formControlName="password">
+        <mat-error *ngIf="registerForm.get('password').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button type="submit" [disabled]="!registerForm.valid" color="accent">Register</button>
+      <mat-card-subtitle>Already have an account? <a routerLink="/login" color="warn">Sign in!</a></mat-card-subtitle>
+    </form>
+  </mat-card>
+</div>

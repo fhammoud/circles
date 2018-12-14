@@ -1,8 +1,8 @@
 <mat-card>
-  <div class="avatar">{{post.owner.charAt(0)}}</div>
+  <button mat-mini-fab color="accent" class="f-avatar">{{post.owner.charAt(0)}}</button>
   <mat-card-header>
     <mat-card-title>{{post.owner}}
-      <button mat-button aria-label="more" mdTooltip="More"
+      <button mat-button aria-label="more" matTooltip="More"
               [matMenuTriggerFor]="appMenu" *appRole="post.owner"><mat-icon>more_vert</mat-icon></button>
     </mat-card-title>
     <mat-card-subtitle>{{post.time | date:"medium"}}</mat-card-subtitle>
@@ -10,8 +10,7 @@
   <mat-card-content>
     <span [outerHTML]="post.content | urlify"></span>
   </mat-card-content>
-  <button mat-mini-fab aria-label="chat" mdTooltip="Chat"><mat-icon>chat</mat-icon></button>
-  <button mat-mini-fab aria-label="like" mdTooltip="Like"><mat-icon>thumb_up</mat-icon></button>
+  <!--<button mat-mini-fab aria-label="chat" matTooltip="Chat"><mat-icon>chat</mat-icon></button>-->
 </mat-card>
 
 <mat-menu #appMenu="matMenu">

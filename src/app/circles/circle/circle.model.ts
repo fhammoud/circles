@@ -1,3 +1,7 @@
 export class Circle {
-  constructor(public name: string, public id: string, public owner: string) {}
+  constructor(
+    public name: string,
+    public id: string,
+    public owner: string
+  ) {}
 }

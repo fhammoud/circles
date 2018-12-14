@@ -3,7 +3,7 @@ mat-card {
 }
 
 button[mat-fab] {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 button[mat-button] {

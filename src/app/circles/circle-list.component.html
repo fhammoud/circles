@@ -1,10 +1,6 @@
-<div id="circle-list" class="container">
-  <div>
-    <div id="circles">
-      <h3 *ngIf="circles.length === 0">You're not part of any circles yet :(</h3>
-      <app-circle [circle]="circle" *ngFor="let circle of circles"></app-circle>
-    </div>
-  </div>
-  <button mat-fab type="button" class="fab" matTooltip="New circle" matTooltipPosition="before"
-          aria-label="new circle" routerLink="new-circle"><mat-icon>add</mat-icon></button>
+<div id="circles">
+  <h2 *ngIf="circles.length === 0">You're not part of any circles yet :(</h2>
+  <app-circle [circle]="circle" *ngFor="let circle of circles"></app-circle>
 </div>
+<button mat-fab type="button" class="f-fab" matTooltip="New circle" matTooltipPosition="before"
+        aria-label="new circle" routerLink="new-circle"><mat-icon>add</mat-icon></button>

@@ -33,8 +33,8 @@ export class RegisterComponent implements OnInit {
     this.userService.register(this.user)
       .subscribe(() => {
         this.router.navigateByUrl('/');
-      }, error => {
-        this.dialog.open(ErrorComponent, {data: error.message});
+      }, err => {
+        this.dialog.open(ErrorComponent, {data: err.error.message});
       });
   }
 }

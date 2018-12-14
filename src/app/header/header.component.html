@@ -1,16 +1,18 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="fixed-top">
   <button mat-button (click)="onGoBack()"
-          *ngIf="!isMainPage"
+          *ngIf="showBackButton"
           aria-label="back">
     <mat-icon>arrow_back</mat-icon>
   </button>
   <span>{{title}}</span>
-  <button mat-button id="menu" [matMenuTriggerFor]="appMenu"
-          aria-label="menu"><mat-icon>menu</mat-icon></button>
+  <button mat-button id="menu"
+          [matMenuTriggerFor]="appMenu"
+          aria-label="menu"
+          *ngIf="userService.isLoggedIn()">
+    <mat-icon>menu</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-menu #appMenu="matMenu">
-  <button mat-menu-item aria-label="settings">Settings</button>
-  <button mat-menu-item aria-label="help">Help</button>
   <button mat-menu-item (click)="onLogout()" aria-label="logout">Logout</button>
 </mat-menu>

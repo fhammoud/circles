@@ -1,29 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="chat" #chat>
-      <app-message [messages]="messages" *ngFor="let messages of groupedMessages"></app-message>
-    </div>
-  </div>
-  <div class="row">
+<div class="f-chat-area">
+  <div class="container">
+    <app-message [messages]="messages" *ngFor="let messages of groupedMessages"></app-message>
     <div class="f-is-typing-block">
       <div *ngFor="let participant of participants">
         <div *ngIf="participant.isTyping">
-          <div class="avatar">
-            {{participant.name.charAt(0)}}
-          </div>
+          <button mat-mini-fab color="accent">{{participant.name.charAt(0)}}</button>
           <mat-chip selected="true" color="warn">is typing ...</mat-chip>
         </div>
       </div>
     </div>
   </div>
 </div>
-<mat-card class="f-chat">
+<mat-card class="f-chat-form">
   <div class="container">
     <form [formGroup]="messageForm" (ngSubmit)="onSendMessage()" novalidate>
-      <mat-form-field>
-        <button type="button" mat-button matPrefix aria-label="attach"><mat-icon>add_circle_outline</mat-icon></button>
-        <textarea matInput matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="4" formControlName="message"
-                  autocomplete="off" (keydown)="onKeyDown($event)" title="message"></textarea>
+      <mat-form-field class="f-form">
+        <!--<button type="button" mat-button matPrefix aria-label="attach"><mat-icon>add_circle_outline</mat-icon></button>-->
+        <textarea class="f-textarea" matInput matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="4"
+                  formControlName="message" autocomplete="off" (keydown)="onKeyDown($event)" title="message"></textarea>
         <button mat-button matSuffix [disabled]="!messageForm.valid" aria-label="send"><mat-icon>send</mat-icon></button>
       </mat-form-field>
     </form>

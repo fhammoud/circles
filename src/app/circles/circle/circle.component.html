@@ -1,19 +1,20 @@
 <mat-card>
-  <mat-card-title>{{circle.name}}
-    <button mat-button type="button" matTooltip="Settings" [matMenuTriggerFor]="appMenu"
-            aria-label="more" *appRole="circle.owner"><mat-icon>more_vert</mat-icon></button>
-  </mat-card-title>
-  <button mat-fab type="button" matTooltip="Chat"
-          [routerLink]="[circle.id, 'chat']"
-          aria-label="chat"><mat-icon>chat</mat-icon></button>
-  <button mat-fab type="button" matTooltip="Wall"
-          [routerLink]="[circle.id, 'wall']"
-          aria-label="posts"><mat-icon>forum</mat-icon></button>
-  <button mat-fab type="button" matTooltip="Album"
-          aria-label="album"><mat-icon>photo</mat-icon></button>
-  <button mat-fab type="button" matTooltip="Events"
-          aria-label="events"><mat-icon>event</mat-icon></button>
-
+  <div class="container">
+    <mat-card-title>{{circle.name}}
+      <button mat-button type="button" matTooltip="Settings" [matMenuTriggerFor]="appMenu"
+              aria-label="more" *appRole="circle.owner"><mat-icon>more_vert</mat-icon></button>
+    </mat-card-title>
+    <button mat-fab type="button" matTooltip="Chat"
+            [routerLink]="[circle.id, 'chat']"
+            aria-label="chat"><mat-icon>chat</mat-icon></button>
+    <button mat-fab type="button" matTooltip="Wall"
+            [routerLink]="[circle.id, 'wall']"
+            aria-label="posts"><mat-icon>forum</mat-icon></button>
+    <button mat-fab type="button" matTooltip="Album"
+            aria-label="album"><mat-icon>photo</mat-icon></button>
+<!--  <button mat-fab type="button" matTooltip="Events"
+          aria-label="events"><mat-icon>event</mat-icon></button>-->
+  </div>
 </mat-card>
 
 <mat-menu #appMenu="matMenu">

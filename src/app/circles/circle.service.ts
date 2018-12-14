@@ -20,27 +20,10 @@ export class CircleService {
         }
         return this.circles;
       }));
-
-    /*if ('indexedDB' in window) {
-      readAllData('posts')
-        .then(function(data) {
-          if (!this.networkDataReceived) {
-            console.log('From cache', data);
-            this.circles = [];
-            for (let i = 0; i < data.length; i++) {
-              this.circles.push(new Circle(data[i].name, data[i]._id, data[i].owner.username));
-            }
-            return this.circles;
-          }
-        });
-    }*/
   }
 
   createCircle(name: string) {
-    return this.http.post('/circles', {name: name})
-      .pipe(map((response: any) => {
-        console.log(response);
-      }));
+    return this.http.post('/circles', {name: name});
   }
 
   deleteCircle(id: string) {

@@ -1,14 +1,19 @@
-<mat-card>
-  <mat-card-title>Edit Post</mat-card-title>
-  <mat-card-content>
-    <mat-form-field>
-      <input matInput placeholder="Share something interesting..." #post autocomplete="off">
-      <button mat-raised-button matSuffix type="button" aria-label="post" matTooltip="Post" (click)="onEditPost(post.value)">
-        <mat-icon>done</mat-icon>
-      </button>
-      <button mat-raised-button matSuffix type="button" aria-label="cancel" matTooltip="Cancel" (click)="onCancel()">
-        <mat-icon>clear</mat-icon>
-      </button>
-    </mat-form-field>
-  </mat-card-content>
-</mat-card>
+<div class="container">
+  <mat-card>
+    <mat-card-title>Edit Post</mat-card-title>
+    <mat-card-content>
+      <mat-form-field class="f-form">
+        <textarea matInput matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="4"
+                  autocomplete="off" placeholder="Share something interesting..." #post></textarea>
+        <button mat-raised-button matSuffix type="button" aria-label="post" matTooltip="Post"
+                (click)="onEditPost(post.value)"
+                [disabled]="post.value.length === 0">
+          <mat-icon>done</mat-icon>
+        </button>
+        <button mat-raised-button matSuffix type="button" aria-label="cancel" matTooltip="Cancel" (click)="onCancel()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+</div>

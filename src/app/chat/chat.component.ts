@@ -1,4 +1,4 @@
-import {AfterViewChecked, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Message} from "./message/message.model";
 import {ChatService} from "./chat.service";
 import {ActivatedRoute} from "@angular/router";
@@ -14,10 +14,8 @@ import {map} from "rxjs/operators";
   styleUrls: ['./chat.component.css'],
   providers: [ChatService]
 })
-export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
-  @ViewChild('chat') private chatScroll: ElementRef;
+export class ChatComponent implements OnInit, OnDestroy {
   messageForm: FormGroup;
-
   messages: Message[] = [];
   groupedMessages: Message[][] = [];
   circleId: string;
@@ -75,8 +73,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.socket.on('connect', function () {
       this.socket.emit('join room', this.circleId);
     }.bind(this));
-
-    this.scrollToBottom();
   }
 
   ngOnDestroy() {
@@ -99,14 +95,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
     if (event.code === 'Enter') {
       this.onSendMessage();
     }
-  }
-
-  ngAfterViewChecked(): void {
-    this.scrollToBottom();
-  }
-
-  private scrollToBottom() {
-    this.chatScroll.nativeElement.scrollTop = this.chatScroll.nativeElement.scrollHeight;
   }
 
   private appendMessage(message: Message) {

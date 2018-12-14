@@ -11,7 +11,7 @@ import {Location} from "@angular/common";
 })
 export class HeaderComponent implements OnInit {
   title: string = 'Circles';
-  isMainPage: boolean;
+  showBackButton: boolean;
 
   constructor(
     public userService: UserService,
@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
 
     this.router.events.subscribe(
       () => {
-        this.isMainPage = this.location.path() === ''
+        this.showBackButton = this.location.path() !== '' && !/login/.test(this.location.path());
       }
     )
   }
@@ -37,6 +37,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onGoBack() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.location.back();
   }
 }
