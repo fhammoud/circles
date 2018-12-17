@@ -13,7 +13,6 @@ export class WallComponent implements OnInit {
   @ViewChild('post') post: ElementRef;
   posts: Post[] = [];
   circleId: string;
-  circleName: string;
   user: string;
   enableNotifications: boolean;
 
@@ -28,8 +27,6 @@ export class WallComponent implements OnInit {
         this.circleId = params['id'];
         this.postService.getPosts(this.circleId)
           .subscribe(data => {
-            this.stateService.setTitle(data.name);
-            this.circleName = data.name;
             this.posts = data.posts;
             this.enableNotifications = localStorage.getItem("notifications") === "true";
           });

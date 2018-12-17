@@ -12,6 +12,7 @@ import {Location} from "@angular/common";
 export class HeaderComponent implements OnInit {
   title: string = 'Circles';
   showBackButton: boolean;
+  isLoggedIn: boolean;
 
   constructor(
     public userService: UserService,
@@ -22,7 +23,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.stateService.getState()
-      .subscribe(state => this.title = state.title);
+      .subscribe(state => {
+        this.title = state.title;
+        this.isLoggedIn = state.isLoggedIn;
+      });
 
     this.router.events.subscribe(
       () => {

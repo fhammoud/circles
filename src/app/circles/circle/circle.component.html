@@ -5,13 +5,13 @@
               aria-label="more" *appRole="circle.owner"><mat-icon>more_vert</mat-icon></button>
     </mat-card-title>
     <button mat-fab type="button" matTooltip="Chat"
-            [routerLink]="[circle.id, 'chat']"
+            [routerLink]="[circle.id, 'chat']" (click)="onPageClick()"
             aria-label="chat"><mat-icon>forum</mat-icon></button>
     <button mat-fab type="button" matTooltip="Wall"
-            [routerLink]="[circle.id, 'wall']"
+            [routerLink]="[circle.id, 'wall']" (click)="onPageClick()"
             aria-label="posts"><mat-icon>view_day</mat-icon></button>
     <button mat-fab type="button" matTooltip="Album"
-            [routerLink]="[circle.id, 'album']"
+            [routerLink]="[circle.id, 'album']" (click)="onPageClick()"
             aria-label="album"><mat-icon>photo</mat-icon></button>
 <!--  <button mat-fab type="button" matTooltip="Events"
           aria-label="events"><mat-icon>event</mat-icon></button>-->

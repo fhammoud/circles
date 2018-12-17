@@ -35,6 +35,7 @@ import {PushService} from "./_shared/services/push.service";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AlbumComponent } from './album/album.component';
+import { SpinnerComponent } from './_shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AlbumComponent } from './album/album.component';
     UrlifyPipe,
     RoleDirective,
     EditPostComponent,
-    AlbumComponent
+    AlbumComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

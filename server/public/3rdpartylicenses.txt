@@ -930,6 +930,8 @@ MIT
 
 @angular/material/toolbar
 
+@angular/material/progress-spinner
+
 @angular/service-worker
 MIT
 

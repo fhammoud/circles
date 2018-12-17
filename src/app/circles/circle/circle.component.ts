@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Circle} from "./circle.model";
 import {CircleService} from "../circle.service";
+import {StateService} from "../../_shared/services/state.service";
 
 @Component({
   selector: 'app-circle',
@@ -10,12 +11,18 @@ import {CircleService} from "../circle.service";
 export class CircleComponent implements OnInit {
   @Input() circle: Circle;
 
-  constructor(private circleService: CircleService) { }
+  constructor(
+    private circleService: CircleService,
+    private stateService: StateService) { }
 
   ngOnInit() {
   }
 
   onCircleDelete() {
     this.circleService.deleteCircle(this.circle.id).subscribe();
+  }
+
+  onPageClick() {
+    this.stateService.setTitle(this.circle.name);
   }
 }

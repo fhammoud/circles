@@ -3,11 +3,13 @@ import {User} from "./user.model";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
+import {StateService} from "../_shared/services/state.service";
 
 @Injectable()
 export class UserService {
   constructor(
     private http: HttpClient,
+    private stateService: StateService,
     private jwtHelperService: JwtHelperService) {}
 
   login(user: User) {
@@ -25,6 +27,7 @@ export class UserService {
   }
 
   logout() {
+    this.stateService.deleteState();
     localStorage.clear();
   }
 
@@ -34,6 +37,7 @@ export class UserService {
     if (token)
       isLoggedIn = !this.jwtHelperService.isTokenExpired(token);
 
+    this.stateService.setIsLoggedIn(isLoggedIn);
     return isLoggedIn;
   }
 }

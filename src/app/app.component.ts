@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, CanActivate, Router, RoutesRecognized} from "@angular/router";
 import {AuthGuard} from "./_shared/guards/auth.guard";
+import {StateService} from "./_shared/services/state.service";
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,13 @@ import {AuthGuard} from "./_shared/guards/auth.guard";
 })
 export class AppComponent implements OnInit{
 
+  isLoading: boolean;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private authGuard: AuthGuard) { }
+    private authGuard: AuthGuard,
+    private stateService: StateService) { }
 
   ngOnInit() {
     this.router.events
@@ -21,6 +25,11 @@ export class AppComponent implements OnInit{
           this.guardRoute(event);
         }
       });
+
+    this.stateService.getState()
+      .subscribe((state) => {
+        this.isLoading = state.isLoading;
+      })
 }
 
   private guardRoute(event: RoutesRecognized): void {

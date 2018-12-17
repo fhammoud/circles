@@ -43,7 +43,6 @@ export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
         this.circleId = params;
         this.chatService.getChat(this.circleId)
           .subscribe(data => {
-            this.stateService.setTitle(data.name);
             this.groupedMessages = this.groupMessages(data.chat);
           });
       });

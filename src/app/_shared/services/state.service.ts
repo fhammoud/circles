@@ -7,18 +7,25 @@ export class StateService {
   private subject = new Subject<any>();
 
   private state = {
-    title: '',
-    username: '',
-    circle: '',
+    title: 'Circles',
+    isLoggedIn: false,
     isLoading: false
   };
-
-  // private isLoading = false;
 
   constructor(private jwtHelperService: JwtHelperService) { }
 
   setTitle(title: string) {
     this.state.title = title;
+    this.subject.next(this.state);
+  }
+
+  setIsLoggedIn(value: boolean) {
+    this.state.isLoggedIn = value;
+    this.subject.next(this.state);
+  }
+
+  setIsLoading(value: boolean) {
+    this.state.isLoading = value;
     this.subject.next(this.state);
   }
 
@@ -36,8 +43,12 @@ export class StateService {
     return this.subject.asObservable();
   }
 
-  setLoading(value: boolean) {
-    this.state.isLoading = value;
+  deleteState() {
+    this.state = {
+      title: 'Circles',
+      isLoggedIn: false,
+      isLoading: false
+    };
     this.subject.next(this.state);
   }
 }
