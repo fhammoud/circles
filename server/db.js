@@ -2,12 +2,14 @@ var mongoose = require('mongoose');
 
 // Get DB URL based on environment
 // May want to add .env file
-var url = process.env.NODE_ENV === 'development'
-  ? process.env.MONGODB_URI_DEV
-  : process.env.MONGODB_URI;
+var url = process.env.MONGODB_URI;
 
 // Connect to DB
-mongoose.connect(url);
+var options = {
+  useCreateIndex: true,
+  useNewUrlParser: true
+};
+mongoose.connect(url, options);
 
 // Mongoose event handlers
 mongoose.connection.on('connected', function () {

@@ -9,22 +9,27 @@ var User = require('../models/User');
 
 router.use('/users', users);
 
+// Validate authentication
 router.use('/', function (req, res, next) {
   var token = req.headers.authorization.split(" ")[1];
   jwt.verify(token, process.env.SECRET, function (err, decoded) {
     if (err)
       return res.status(401).json(err);
 
-    User.findById(decoded.user._id, function (err, user) {
-      if (err)
-        return res.status(500).json(err);
+    User.findById(decoded.user._id)
+      .then(function (user) {
 
-      if (!user)
-        return res.status(401).json('Unauthorized');
+        if (!user) {
+          res.status(401);
+          throw new Error('Unauthorized');
+        }
 
-      req.user = user;
-      next();
-    });
+        req.user = user;
+        next();
+      })
+      .catch(function (err) {
+        next(err);
+      });
   });
 });
 

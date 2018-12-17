@@ -16,7 +16,10 @@
     <form [formGroup]="messageForm" (ngSubmit)="onSendMessage()" novalidate>
       <mat-form-field class="f-form">
         <!--<button type="button" mat-button matPrefix aria-label="attach"><mat-icon>add_circle_outline</mat-icon></button>-->
-        <textarea class="f-textarea" matInput matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="4"
+        <textarea class="f-textarea" matInput
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="1" cdkAutosizeMaxRows="4"
+                  #autosize="cdkTextareaAutosize"
                   formControlName="message" autocomplete="off" (keydown)="onKeyDown($event)" title="message"></textarea>
         <button mat-button matSuffix [disabled]="!messageForm.valid" aria-label="send"><mat-icon>send</mat-icon></button>
       </mat-form-field>

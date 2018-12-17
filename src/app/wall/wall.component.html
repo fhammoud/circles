@@ -2,9 +2,10 @@
   <mat-card>
     <mat-card-content>
       <mat-form-field class="f-form">
-        <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="4"
-                  autocomplete="off" placeholder="Share something interesting..." #post></textarea>
-        <button mat-raised-button matSuffix type="button" aria-label="post" matTooltip="Post"
+        <textarea class="f-textarea" matInput cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="4"
+                  autocomplete="off" placeholder="Share something interesting..." title="post"
+                  #post></textarea>
+        <button mat-button matSuffix type="button" aria-label="post" matTooltip="Post"
                 (click)="onNewPost()"
                 [disabled]="post.value.length === 0">
           <mat-icon>create</mat-icon>

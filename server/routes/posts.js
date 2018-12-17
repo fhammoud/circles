@@ -24,8 +24,8 @@ router.post('/:circle', function (req, res) {
 });
 
 // Get posts
-router.get('/:circle', function (req, res) {
-  Circle.find({ _id: req.params.circle }, 'name wall')
+router.get('/', function (req, res) {
+  Circle.find({ _id: req.query.circleId }, 'name wall')
     .populate('wall.owner', 'username')
     .exec(function (err, wall) {
       if (err)
@@ -36,15 +36,15 @@ router.get('/:circle', function (req, res) {
 });
 
 // Get post
-router.get('/:circle', function (req, res) {
-  Circle.find({ _id: req.params.circle }, 'name wall')
-    .populate('wall.owner', 'username')
-    .exec(function (err, wall) {
+router.get('/:id', function (req, res) {
+  Circle.findOne({"wall._id": req.params.id})
+    .select({"wall": {$elemMatch: {"_id": req.params.id}}})
+    .exec(function (err, result) {
       if (err)
         return res.status(500).json(err);
 
-      res.status(200).json(wall);
-    });
+      res.status(200).json(result.wall[0]);
+    })
 });
 
 // Update post

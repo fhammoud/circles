@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {PostService} from "../post.service";
 import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";
 import {map} from "rxjs/operators";
+import {Post} from "../post/post.model";
 
 @Component({
   selector: 'app-edit-post',
@@ -11,20 +12,31 @@ import {map} from "rxjs/operators";
 })
 export class EditPostComponent implements OnInit {
 
+  @ViewChild('post') postInput: ElementRef;
+  postId: string;
+
   constructor(private postService: PostService,
               private route: ActivatedRoute,
               private location: Location) { }
 
   ngOnInit() {
+    this.route.params
+      .pipe(map((params: Params) =>{
+        this.postId = params['postId'];
+      }))
+      .subscribe(()=> {
+        return this.postService.getPost(this.postId)
+          .subscribe((post: Post) => {
+            this.postInput.nativeElement.value = post.content;
+          });
+      });
   }
 
   onEditPost(post: string) {
-    this.route.params
-      .pipe(map((params: Params) => {
-        const id = params['postId'];
-        this.postService.updatePost(id, post).subscribe();
-        this.goBack();
-      })).subscribe();
+    this.postService.updatePost(this.postId, post)
+      .subscribe(()=>{
+        return this.goBack();
+      });
   }
 
   public onCancel() {

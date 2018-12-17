@@ -2,16 +2,8 @@ mat-card {
   margin-bottom: 1px;
 }
 
-button[mat-mini-fab] {
-  margin-right: 10px;
-}
-
 button[mat-button] {
   float: right;
-}
-
-mat-card-title {
-  margin-bottom: 10px;
 }
 
 .f-avatar {

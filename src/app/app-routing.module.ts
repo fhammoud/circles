@@ -5,8 +5,8 @@ import {RegisterComponent} from "./user/register/register.component";
 import {CircleRoutingModule} from "./circles/circle-routing.module";
 
 const routes: Routes = [
-  { path: 'login',  component: LoginComponent },
-  { path: 'register',  component: RegisterComponent },
+  { path: 'login',  component: LoginComponent, data: { isPublic: true } },
+  { path: 'register',  component: RegisterComponent, data: { isPublic: true } },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Message} from "./message/message.model";
 import {ChatService} from "./chat.service";
 import {ActivatedRoute} from "@angular/router";
@@ -7,6 +7,7 @@ import {StateService} from "../_shared/services/state.service";
 import {Participant} from "./participant.model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {map} from "rxjs/operators";
+import {CdkTextareaAutosize} from "@angular/cdk/text-field";
 
 @Component({
   selector: 'app-chat',
@@ -14,7 +15,8 @@ import {map} from "rxjs/operators";
   styleUrls: ['./chat.component.css'],
   providers: [ChatService]
 })
-export class ChatComponent implements OnInit, OnDestroy {
+export class ChatComponent implements OnInit, OnDestroy, AfterViewChecked {
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
   messageForm: FormGroup;
   messages: Message[] = [];
   groupedMessages: Message[][] = [];
@@ -22,8 +24,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   participants: Participant[] = [];
   typing: string = '';
   socket = io('', {query: 'username=' + this.stateService.getUsername()});
+  main: any;
 
-  constructor(private chatService: ChatService, private stateService: StateService, private route: ActivatedRoute) { }
+  constructor(
+    private chatService: ChatService,
+    private stateService: StateService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -92,9 +98,9 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   onKeyDown(event: KeyboardEvent) {
     this.socket.emit('user typing');
-    if (event.code === 'Enter') {
+    /*if (event.code === 'Enter') {
       this.onSendMessage();
-    }
+    }*/
   }
 
   private appendMessage(message: Message) {
@@ -134,5 +140,10 @@ export class ChatComponent implements OnInit, OnDestroy {
       }
     }
     return index;
+  }
+
+  ngAfterViewChecked(): void {
+    this.main = document.getElementById('main');
+    this.main.scrollTop = this.main.scrollHeight;
   }
 }

@@ -1,29 +1,43 @@
-import {AfterViewChecked, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Router} from "@angular/router";
-import {StateService} from "./_shared/services/state.service";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, CanActivate, Router, RoutesRecognized} from "@angular/router";
+import {AuthGuard} from "./_shared/guards/auth.guard";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewChecked{
-  // Sets initial value to true to show loading spinner on first load
-  @ViewChild("main") window: ElementRef;
-  loading: boolean = true;
+export class AppComponent implements OnInit{
 
-  constructor(private router: Router, private stateService: StateService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private authGuard: AuthGuard) { }
 
-  ngOnInit(): void {
-    this.stateService.getState()
-      .subscribe(
-        state => {
-          this.loading = state.isLoading;
+  ngOnInit() {
+    this.router.events
+      .subscribe(event => {
+        if (event instanceof RoutesRecognized) {
+          this.guardRoute(event);
         }
-      );
+      });
+}
+
+  private guardRoute(event: RoutesRecognized): void {
+    if (this.isPublic(event)) {
+      return;
+    }
+
+    if (!this.callCanActivate(event, this.authGuard)) {
+      return;
+    }
   }
 
-  ngAfterViewChecked(): void {
-    this.window.nativeElement.scrollTop = this.window.nativeElement.scrollHeight;
+  private callCanActivate(event: RoutesRecognized, guard: CanActivate) {
+    return guard.canActivate(this.route.snapshot, event.state);
+  }
+
+  private isPublic(event: RoutesRecognized) {
+    return event.state.root.firstChild.data.isPublic;
   }
 }

@@ -1,15 +1,15 @@
 mat-sidenav-container {
-  height: 100vh;
+  height: 100%;
 }
 
-.f-main {
+main {
   height: 100%;
   padding-top: 64px;
   overflow-y: auto;
 }
 
 @media (max-width: 599px){
-  .f-main {
+  main {
     padding-top: 56px;
     height: 100%;
     overflow-y: auto;

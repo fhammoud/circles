@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
 import {Post} from "./post/post.model";
 import {HttpClient} from "@angular/common/http";
-import {map} from 'rxjs/operators'
+import {map, tap} from 'rxjs/operators'
 
 @Injectable()
 export class PostService {
   posts: Post[] = [];
   constructor(private http: HttpClient) { }
 
+  getPost(id: string) {
+    return this.http.get('/posts/' + id)
+      .pipe(tap((response: any) => {
+        return new Post(response._id, response.owner, response.content);
+      }))
+  }
+
   getPosts(circle: string) {
-    return this.http.get('/posts/' + circle)
+    return this.http.get('/posts?circleId=' + circle)
       .pipe(map((response: any) => {
         let name = response[0].name;
         let wall = response[0].wall;
@@ -30,8 +37,7 @@ export class PostService {
   }
 
   updatePost(id: string, content: string) {
-    return this.http.put('/posts/' + id, {content: content})
-      .pipe(map((response: any) => console.log(response)));
+    return this.http.put('/posts/' + id, {content: content});
   }
 
   deletePost(id: string) {

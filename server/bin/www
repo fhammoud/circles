@@ -20,7 +20,19 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+var server;
+if (process.env.NODE_ENV === 'development') {
+  var https = require('https');
+  var fs = require('fs');
+  var options = {
+    key: fs.readFileSync('C:\\Users\\faris\\keystore\\key.pem'),
+    cert: fs.readFileSync('C:\\Users\\faris\\keystore\\cert.pem'),
+    passphrase: 'fmhxor16'
+  };
+  server = https.createServer(options, app);
+  port = 3443;
+} else
+  server = http.createServer(app);
 
 /**
  * Attach socket listener.

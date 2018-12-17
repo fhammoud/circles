@@ -34,6 +34,7 @@ import {AppJwtModule} from "./app.jwt.module";
 import {PushService} from "./_shared/services/push.service";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AlbumComponent } from './album/album.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { environment } from '../environments/environment';
     PostComponent,
     UrlifyPipe,
     RoleDirective,
-    EditPostComponent
+    EditPostComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,

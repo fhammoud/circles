@@ -25,4 +25,12 @@ app.use('/api', api);
 // Catch all other requests and return index
 app.use('*', index);
 
+// Error handler
+app.use(function (err, req, res, next) {
+  console.log(err);
+  var status = res.statusCode === 200 ? 500 : res.statusCode;
+  res.status(status);
+  res.json({ message: err.message });
+});
+
 module.exports = app;

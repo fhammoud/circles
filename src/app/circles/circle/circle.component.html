@@ -6,11 +6,12 @@
     </mat-card-title>
     <button mat-fab type="button" matTooltip="Chat"
             [routerLink]="[circle.id, 'chat']"
-            aria-label="chat"><mat-icon>chat</mat-icon></button>
+            aria-label="chat"><mat-icon>forum</mat-icon></button>
     <button mat-fab type="button" matTooltip="Wall"
             [routerLink]="[circle.id, 'wall']"
-            aria-label="posts"><mat-icon>forum</mat-icon></button>
+            aria-label="posts"><mat-icon>view_day</mat-icon></button>
     <button mat-fab type="button" matTooltip="Album"
+            [routerLink]="[circle.id, 'album']"
             aria-label="album"><mat-icon>photo</mat-icon></button>
 <!--  <button mat-fab type="button" matTooltip="Events"
           aria-label="events"><mat-icon>event</mat-icon></button>-->

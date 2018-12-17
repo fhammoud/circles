@@ -5,6 +5,7 @@ import {User} from "../user.model";
 import {Router} from "@angular/router";
 import {ErrorComponent} from "../../_shared/error/error.component";
 import {MatDialog} from "@angular/material";
+import {registerValidator} from "./register.validator";
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = new FormGroup({
       username: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required)
+      password: new FormControl('', Validators.required),
+      passwordConfirm: new FormControl('', registerValidator('password'))
     });
   }
 

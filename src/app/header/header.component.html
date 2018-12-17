@@ -7,8 +7,8 @@
   <span>{{title}}</span>
   <button mat-button id="menu"
           [matMenuTriggerFor]="appMenu"
-          aria-label="menu"
-          *ngIf="userService.isLoggedIn()">
+          aria-label="menu">
+          <!--*ngIf="userService.isLoggedIn()">-->
     <mat-icon>menu</mat-icon>
   </button>
 </mat-toolbar>

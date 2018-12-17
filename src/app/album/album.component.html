@@ -1,0 +1,16 @@
+<!--<div class="container-fluid">-->
+  <div id="video-player" *ngIf="hasCamera">
+    <div [hidden]="!showVideo">
+      <video id="player" autoplay #player></video>
+      <button mat-fab type="button" matTooltip="Capture" id="capture-button"
+              aria-label="capture" (click)="onCapture()"><mat-icon>camera</mat-icon></button>
+    </div>
+    <canvas id="canvas" width="320px" height="240px" #canvas [hidden]="showVideo"></canvas>
+  </div>
+  <div class="container">
+    <div id="pick-image" #imagepicker *ngIf="!hasCamera">
+      <h6>Pick an Image</h6>
+      <input type="file" accept="image/*" id="image-picker">
+    </div>
+  </div>
+<!--</div>-->

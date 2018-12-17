@@ -6,7 +6,9 @@ import {map} from "rxjs/operators";
 
 @Injectable()
 export class UserService {
-  constructor(private http: HttpClient, private jwtHelperService: JwtHelperService) {}
+  constructor(
+    private http: HttpClient,
+    private jwtHelperService: JwtHelperService) {}
 
   login(user: User) {
     return this.http.post('/users/login', user)
