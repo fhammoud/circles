@@ -11,7 +11,7 @@ export class PostService {
   getPost(id: string) {
     return this.http.get('/posts/' + id)
       .pipe(tap((response: any) => {
-        return new Post(response._id, response.owner, response.content);
+        return new Post(response._id, response.owner, response.content, response.time);
       }))
   }
 

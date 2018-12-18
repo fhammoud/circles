@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var messageSchema = require('./Message');
 var postSchema = require('./Post');
+var imageSchema = require('./Image');
 
 // Circle schema
 var circleSchema = new Schema({
@@ -19,7 +20,8 @@ var circleSchema = new Schema({
     ref: 'User'
   },
   chat: [messageSchema],
-  wall: [postSchema]
+  wall: [postSchema],
+  album: [imageSchema]
 });
 
 module.exports = mongoose.model('Circle', circleSchema);

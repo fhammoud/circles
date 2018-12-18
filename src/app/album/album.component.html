@@ -1,16 +1,32 @@
-<!--<div class="container-fluid">-->
-  <div id="video-player" *ngIf="hasCamera">
-    <div [hidden]="!showVideo">
-      <video id="player" autoplay #player></video>
-      <button mat-fab type="button" matTooltip="Capture" id="capture-button"
-              aria-label="capture" (click)="onCapture()"><mat-icon>camera</mat-icon></button>
-    </div>
-    <canvas id="canvas" width="320px" height="240px" #canvas [hidden]="showVideo"></canvas>
+<div id="video-player" *ngIf="hasCamera">
+  <div [hidden]="!showVideo">
+    <video id="player" autoplay #player></video>
+    <button mat-fab type="button" matTooltip="Capture" id="capture-button"
+            aria-label="capture" (click)="onCapture()"><mat-icon>camera</mat-icon></button>
   </div>
-  <div class="container">
-    <div id="pick-image" #imagepicker *ngIf="!hasCamera">
+  <div id="canvas" [hidden]="showVideo">
+    <canvas width="320px" height="240px" #canvas></canvas>
+    <button mat-fab type="button" matTooltip="Post!" id="post-button"
+            aria-label="post" (click)="onPost()"><mat-icon>done</mat-icon></button>
+    <button mat-fab type="button" matTooltip="Cancel" id="cancel-button"
+            aria-label="cancel" (click)="onCancel()"><mat-icon>clear</mat-icon></button>
+  </div>
+</div>
+<div class="container">
+  <div id="pick-image" *ngIf="!hasCamera">
+    <form (submit)="onFileUpload()">
       <h6>Pick an Image</h6>
-      <input type="file" accept="image/*" id="image-picker">
-    </div>
+      <input type="file" accept="image/*" id="image-picker" #imagepicker required (change)="onFilePicked()">
+      <button mat-fab type="submit" matTooltip="Post!" id="upload-button" color="accent"
+              aria-label="post" (click)="onFileUpload()"><mat-icon>done</mat-icon></button>
+    </form>
   </div>
-<!--</div>-->
+</div>
+
+<div class="f-image-grid">
+  <mat-grid-list cols="4" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let image of images">
+      <img [src]="image.data" alt="image">
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

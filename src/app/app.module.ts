@@ -36,6 +36,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AlbumComponent } from './album/album.component';
 import { SpinnerComponent } from './_shared/spinner/spinner.component';
+import {AlbumService} from "./album/album.service";
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { SpinnerComponent } from './_shared/spinner/spinner.component';
     UserService,
     PostService,
     PushService,
+    AlbumService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppInterceptor,

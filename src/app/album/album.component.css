@@ -13,8 +13,23 @@ canvas {
   position: relative;
 }
 
-#capture-button {
+#capture-button, #post-button {
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+#cancel-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.f-image-grid {
+  padding-top: 5px;
+}
+
+img {
+  width: 100%;
+  height: auto;
 }

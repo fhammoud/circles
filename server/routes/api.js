@@ -5,6 +5,7 @@ var users = require('../routes/users');
 var circles = require('../routes/circles');
 var chat = require('../routes/chat');
 var posts = require('../routes/posts');
+var images = require('../routes/images');
 var User = require('../models/User');
 
 router.use('/users', users);
@@ -36,5 +37,6 @@ router.use('/', function (req, res, next) {
 router.use('/circles', circles);
 router.use('/chat', chat);
 router.use('/posts', posts);
+router.use('/images', images);
 
 module.exports = router;

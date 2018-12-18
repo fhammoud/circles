@@ -3,5 +3,5 @@ export class Post {
     public id: string,
     public owner: string,
     public content: string,
-    public time?: Date) {}
+    public time: Date) {}
 }
