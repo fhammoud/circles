@@ -14,12 +14,10 @@
 </div>
 <div class="container">
   <div id="pick-image" *ngIf="!hasCamera">
-    <form (submit)="onFileUpload()">
-      <h6>Pick an Image</h6>
-      <input type="file" accept="image/*" id="image-picker" #imagepicker required (change)="onFilePicked()">
-      <button mat-fab type="submit" matTooltip="Post!" id="upload-button" color="accent"
-              aria-label="post" (click)="onFileUpload()"><mat-icon>done</mat-icon></button>
-    </form>
+    <h6>Pick an Image</h6>
+    <input type="file" accept="image/*" id="image-picker" #imagepicker required (change)="onFilePicked()">
+    <button mat-fab type="submit" matTooltip="Post!" id="upload-button" color="accent"
+            aria-label="post" (click)="onFileUpload()"><mat-icon>done</mat-icon></button>
   </div>
 </div>
 

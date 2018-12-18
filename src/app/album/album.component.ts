@@ -92,9 +92,11 @@ export class AlbumComponent implements OnInit, OnDestroy {
 
   // Stop camera when we leave the page
   ngOnDestroy(): void {
-    let video = this.player.nativeElement;
-    video.srcObject.getVideoTracks().forEach(function (track) {
-      track.stop();
-    });
+    if (this.player) {
+      let video = this.player.nativeElement;
+      video.srcObject.getVideoTracks().forEach(function (track) {
+        track.stop();
+      });
+    }
   }
 }

@@ -19,6 +19,7 @@ export class AlbumService {
     return this.http.get('/images?circleId=' + circle)
       .pipe(map((result: any) => {
         let album = result[0].album;
+        this.images = [];
         for (let i = 0; i < album.length; i++) {
           album[i].data = this.arrayBufferToBase64(album[i].image.data.data);
           album[i].data = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + album[i].data);
@@ -30,15 +31,6 @@ export class AlbumService {
 
   createImage(circle: string, image: string) {
     return this.http.post('/images/' + circle, {image: image})
-      .pipe(map((image: any) => {
-        image.data = this.arrayBufferToBase64(image.image.data.data);
-        image.data = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + image.data);
-        return this.images.unshift(image);
-      }));
-  }
-
-  createImageFallback(circle: string, image: any) {
-    return this.http.post('/images/' + circle, image)
       .pipe(map((image: any) => {
         image.data = this.arrayBufferToBase64(image.image.data.data);
         image.data = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + image.data);

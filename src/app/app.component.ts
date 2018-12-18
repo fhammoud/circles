@@ -29,7 +29,7 @@ export class AppComponent implements OnInit{
     this.stateService.getState()
       .subscribe((state) => {
         this.isLoading = state.isLoading;
-      })
+      });
 }
 
   private guardRoute(event: RoutesRecognized): void {
