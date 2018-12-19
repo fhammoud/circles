@@ -15,3 +15,7 @@ main {
     overflow-y: auto;
   }
 }
+
+#router-outlet-wrapper {
+  height: 100%;
+}

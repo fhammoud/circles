@@ -1,7 +1,9 @@
 <mat-sidenav-container class="mat-typography">
   <app-header></app-header>
   <main id="main">
-    <router-outlet [hidden]="isLoading"></router-outlet>
+    <div id="router-outlet-wrapper" [hidden]="isLoading">
+      <router-outlet></router-outlet>
+    </div>
     <app-spinner [hidden]="!isLoading"></app-spinner>
   </main>
 </mat-sidenav-container>
