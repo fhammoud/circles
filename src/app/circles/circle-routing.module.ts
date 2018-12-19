@@ -7,6 +7,7 @@ import {NewCircleComponent} from "./new-circle/new-circle.component";
 import {WallComponent} from "../wall/wall.component";
 import {EditPostComponent} from "../wall/edit-post/edit-post.component";
 import {AlbumComponent} from "../album/album.component";
+import {ImageComponent} from "../album/image/image.component";
 
 const circleRoutes = [
   {
@@ -18,6 +19,7 @@ const circleRoutes = [
       { path: ':id/wall', component: WallComponent },
       { path: ':id/wall/:postId/edit', component: EditPostComponent },
       { path: ':id/album', component: AlbumComponent},
+      { path: ':id/album/:imageId', component: ImageComponent},
       { path: 'new-circle', component: NewCircleComponent }
     ]
   }

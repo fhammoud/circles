@@ -2,7 +2,6 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {PostService} from "../post.service";
 import {ActivatedRoute, Params} from "@angular/router";
 import {Location} from "@angular/common";
-import {map} from "rxjs/operators";
 import {Post} from "../post/post.model";
 
 @Component({
@@ -21,11 +20,9 @@ export class EditPostComponent implements OnInit {
 
   ngOnInit() {
     this.route.params
-      .pipe(map((params: Params) =>{
+      .subscribe((params: Params) =>{
         this.postId = params['postId'];
-      }))
-      .subscribe(()=> {
-        return this.postService.getPost(this.postId)
+        this.postService.getPost(this.postId)
           .subscribe((post: Post) => {
             this.postInput.nativeElement.value = post.content;
           });

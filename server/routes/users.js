@@ -19,8 +19,8 @@ router.post('/', function (req, res, next) {
     .catch(function (err) {
       res.status(409);
       err.message = "Nope! That's someone else.";
-      return next(err);
-    })
+      next(err);
+    });
 });
 
 // Login user
@@ -46,7 +46,7 @@ router.post('/login', function(req, res, next) {
       return res.status(200).json(token);
     })
     .catch(function (err) {
-      return next(err);
+      next(err);
     });
 });
 

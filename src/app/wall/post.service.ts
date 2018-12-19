@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Post} from "./post/post.model";
 import {HttpClient} from "@angular/common/http";
-import {map, tap} from 'rxjs/operators'
+import {map} from 'rxjs/operators'
 
 @Injectable()
 export class PostService {
@@ -10,7 +10,7 @@ export class PostService {
 
   getPost(id: string) {
     return this.http.get('/posts/' + id)
-      .pipe(tap((response: any) => {
+      .pipe(map((response: any) => {
         return new Post(response._id, response.owner, response.content, response.time);
       }))
   }

@@ -1,0 +1,6 @@
+<div class="f-image-view" *ngIf="image">
+  <img [src]="image.data" alt="image">
+  <button type="button" mat-mini-fab *ngIf="image.owner === userId" (click)="onDelete()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

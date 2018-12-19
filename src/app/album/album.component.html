@@ -5,7 +5,7 @@
             aria-label="capture" (click)="onCapture()"><mat-icon>camera</mat-icon></button>
   </div>
   <div id="canvas" [hidden]="showVideo">
-    <canvas width="320px" height="240px" #canvas></canvas>
+    <canvas [width]="player.videoWidth" [height]="player.videoHeight" #canvas></canvas>
     <button mat-fab type="button" matTooltip="Post!" id="post-button"
             aria-label="post" (click)="onPost()"><mat-icon>done</mat-icon></button>
     <button mat-fab type="button" matTooltip="Cancel" id="cancel-button"
@@ -24,7 +24,7 @@
 <div class="f-image-grid">
   <mat-grid-list cols="4" rowHeight="1:1">
     <mat-grid-tile *ngFor="let image of images">
-      <img [src]="image.data" alt="image">
+      <a [routerLink]="[image.id]"><img [src]="image.data" alt="image"></a>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

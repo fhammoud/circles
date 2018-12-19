@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {MatDialog} from "@angular/material";
 import {ErrorComponent} from "../_shared/error/error.component";
-import {AlbumService} from "./album.service";
+import {ImageService} from "./image.service";
 import {ActivatedRoute} from "@angular/router";
 import {Image} from "./image.model";
 
@@ -21,7 +21,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
   image: any;
 
   constructor(
-    private albumService: AlbumService,
+    private albumService: ImageService,
     private route: ActivatedRoute,
     public dialog: MatDialog) { }
 
@@ -32,6 +32,8 @@ export class AlbumComponent implements OnInit, OnDestroy {
         this.albumService.getImages(this.circleId)
           .subscribe((images: Image[]) => this.images = images);
       });
+
+    // Assume device has camera at first
     this.hasCamera = true;
     this.initCamera();
   }
@@ -49,7 +51,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
         this.player.nativeElement.srcObject = stream;
       })
       .catch(error => {
-        // this.dialog.open(ErrorComponent, {data: "This browser has no camera"});
+        // this.dialog.open(ErrorComponent, { data: "This browser has no camera" });
         this.hasCamera = false;
       });
   }
@@ -58,8 +60,8 @@ export class AlbumComponent implements OnInit, OnDestroy {
   onCapture() {
     let video = this.player.nativeElement;
     let canvas = this.canvas.nativeElement;
-    let context = canvas.getContext('2d');
     this.showVideo = false;
+    let context = canvas.getContext('2d');
     context.drawImage(video, 0, 0, canvas.width, video.videoHeight / (video.videoWidth / canvas.width));
   }
 
