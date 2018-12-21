@@ -27,6 +27,7 @@ export class WallComponent implements OnInit {
         this.circleId = params['id'];
         this.postService.getPosts(this.circleId)
           .subscribe(data => {
+            this.stateService.setTitle(data.name);
             this.posts = data.posts;
             this.enableNotifications = localStorage.getItem("notifications") === "true";
           });

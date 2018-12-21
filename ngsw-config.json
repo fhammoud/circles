@@ -33,7 +33,8 @@
       "urls": [
         "/api/circles/**",
         "/api/chat/**",
-        "/api/posts/**"
+        "/api/posts/**",
+        "/api/images/**"
       ],
       "cacheConfig": {
         "strategy": "freshness",

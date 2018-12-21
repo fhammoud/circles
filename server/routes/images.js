@@ -32,7 +32,7 @@ router.post('/:circle', function (req, res, next) {
 // Get images
 router.get('/', function (req, res, next) {
   Circle.find({ _id: req.query.circleId })
-    .select('album')
+    .select('name album')
     .populate('album.owner', 'username')
     .exec()
     .then(function (album) {

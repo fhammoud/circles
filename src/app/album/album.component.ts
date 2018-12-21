@@ -4,6 +4,7 @@ import {ErrorComponent} from "../_shared/error/error.component";
 import {ImageService} from "./image.service";
 import {ActivatedRoute} from "@angular/router";
 import {Image} from "./image.model";
+import {StateService} from "../_shared/services/state.service";
 
 @Component({
   selector: 'app-album',
@@ -22,6 +23,7 @@ export class AlbumComponent implements OnInit, OnDestroy {
 
   constructor(
     private albumService: ImageService,
+    private stateService: StateService,
     private route: ActivatedRoute,
     public dialog: MatDialog) { }
 
@@ -30,7 +32,10 @@ export class AlbumComponent implements OnInit, OnDestroy {
       .subscribe(params => {
         this.circleId = params['id'];
         this.albumService.getImages(this.circleId)
-          .subscribe((images: Image[]) => this.images = images);
+          .subscribe((data: any) => {
+            this.stateService.setTitle(data.name);
+            this.images = data.images
+          });
       });
 
     // Assume device has camera at first

@@ -11,18 +11,12 @@ import {StateService} from "../../_shared/services/state.service";
 export class CircleComponent implements OnInit {
   @Input() circle: Circle;
 
-  constructor(
-    private circleService: CircleService,
-    private stateService: StateService) { }
+  constructor(private circleService: CircleService) { }
 
   ngOnInit() {
   }
 
   onCircleDelete() {
     this.circleService.deleteCircle(this.circle.id).subscribe();
-  }
-
-  onPageClick() {
-    this.stateService.setTitle(this.circle.name);
   }
 }
